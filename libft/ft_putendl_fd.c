@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:10:41 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/10/21 20:12:54 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/10/21 20:43:23 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	while (*s)
-	{
-		ft_putstr_fd(s, fd);
-		write (fd, "\n", 1);
-	}
+	ft_putstr_fd(s, fd);
+	write (fd, "\n", 1);
 }
-int main (void)
+/*int main (void)
 {
 	ft_putendl_fd("jeremy spoke in", 1);
 	return 0;
-}
+}*/

@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/20 19:58:27 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/10/22 21:29:26 by ceaugust         ###   ########.fr       */
+/*   Created: 2024/10/22 19:23:12 by ceaugust          #+#    #+#             */
+/*   Updated: 2024/10/22 19:36:33 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h> 
+int	ft_isalnum(int c)
+{
+	return (ft_isalpha(c) || ft_isdigit(c));
+}
 
-//print functions//
-
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-
-//is functions//
-
-int		ft_isalpha(int c);
-int		ft_isdigit(int c);
-int		ft_isalnum(int c);
-int		ft_isascii(int c);
-int		ft_isprint(int c);
-
-#endif
+/*int main (void)
+{
+	ft_putnbr_fd(ft_isalnum(20), 1);
+	ft_putnbr_fd(ft_isalnum(55), 1);
+	ft_putnbr_fd(ft_isalnum(98), 1);
+	return 0;
+}*/

@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 19:58:27 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/10/22 21:29:26 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/10/23 20:28:00 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,11 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+
+//to functions//
+
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+int		ft_atoi(const char *s);
 
 #endif

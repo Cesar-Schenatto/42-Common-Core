@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 19:58:27 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/10/27 07:32:36 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:02:21 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,10 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*calloc(size_t nmemb, size_t size);
 int		memcmp(const void *s1, const void *s2, size_t n);
+
+//string functions//
+
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 #endif

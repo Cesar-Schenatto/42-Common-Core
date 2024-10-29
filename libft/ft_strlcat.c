@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 07:27:22 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/10/29 20:01:04 by ceaugust         ###   ########.fr       */
+/*   Created: 2024/10/29 20:20:34 by ceaugust          #+#    #+#             */
+/*   Updated: 2024/10/29 20:50:45 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+size_t	strlcpy(char *dst, const char *src, size_t size)
 {
-	void	*p;
+	size_t	dstlen;
+	size_t	srclen;
+	size_t	copylimit;
+	size_t	i;
 
-	p = malloc(nmemb * size);
-	if (!p)
-		return (NULL);
-	ft_bzero(p, nmemb * size);
-	return (p);
+	dstlen = ft_strlen(dst);
+	srclen = ft_strlen(src);
 }

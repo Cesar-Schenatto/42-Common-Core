@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 19:58:27 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/10/29 20:02:21 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/10/30 19:29:45 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ int		memcmp(const void *s1, const void *s2, size_t n);
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
 #endif

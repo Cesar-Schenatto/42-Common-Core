@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:07:03 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/10/30 21:08:39 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:09:12 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t n;
+	size_t	n;
 
 	if (*little == '\0')
 		return ((char *)big);
-	
 	n = ft_strlen(little);
 	if (len < n)
 		return (NULL);
-	while(*big && len >= n)
+	while (*big && len >= n)
 	{
 		if (*big == *little && ft_strncmp(big, little, n) == 0)
 			return ((char *)big);

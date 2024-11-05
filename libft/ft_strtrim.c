@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/05 18:00:54 by ceaugust          #+#    #+#             */
+/*   Updated: 2024/11/05 18:02:14 by ceaugust         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-    size_t i;
-    size_t j;
+	size_t	i;
+	size_t	j;
 
-    if (!s1 || !set)
-        return(NULL);
-    i = 0;
-    while (s1[i] && ft_strchr(set, s1[i]))
-        i++;
-    j = ft_strlen(s1);
-    while (j > i && ft_strchr(set, s1[j - 1]))
-        j--;
-    if (i == j)
-        return (ft_strdup(""));
-    return (ft_substr(s1, i, j - i));
+	if (!s1 || !set)
+		return (NULL);
+	i = 0;
+	while (s1[i] && ft_strchr(set, s1[i]))
+		i++;
+	j = ft_strlen(s1);
+	while (j > i && ft_strchr(set, s1[j - 1]))
+		j--;
+	if (i == j)
+		return (ft_strdup(""));
+	return (ft_substr(s1, i, j - i));
 }
 
 /*int main (void)

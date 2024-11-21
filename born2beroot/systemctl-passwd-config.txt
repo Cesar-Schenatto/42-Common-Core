@@ -1,0 +1,54 @@
+///Hi, this is a documentation for the passwd and scheduling scrip configuration.
+
+//////passwd/sudo config
+
+/etc/pam.d/common-password 
+
+password	requisite			pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 lcredit=-1 maxrepeat=3 reject_username enforce_for_root
+password	requisite			pam_pwquality.so difok=7 enforce_for_root 0
+password	[success=1 default=ignore]	pam_unix.so obscure use_authtok
+
+/etc/sudoers
+
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Defaults	passwd_tries=3
+Defaults	badpass_message="NOOOOOOOOO wHaT aRE YOu DoiNG??? DIEEEEEEEEEEEEEEEEEEEEEEEE!!!!" 
+Defaults	logfile="/var/log/sudo/sudo.log"
+Defaults	log_input, log_output
+Defaults	requiretty
+
+
+///////////////////////////
+
+
+//If you hate cron as much as I do, you can use systemctl to set the script to run every 10 min as subject
+
+//To set this using systemctl you need to acess /etc/systemd/system and set a timer and a service which I'll provide below 
+
+////this monitoring monitoring.timer 
+
+[Unit]
+Description=Run Monitoring every 10 minutes after boot/reboot
+
+[Timer]
+
+OnBootSec=10min
+
+OnUnitActiveSec=10min
+
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target
+
+////This is monitoring.service
+
+[Unit]
+Description=Run Monitoring.sh
+
+[Service]
+ExecStart=/usr/local/bin/monitoring.sh
+
+///////after seting both, enable your timer and reload daemon and start/restart your timer 

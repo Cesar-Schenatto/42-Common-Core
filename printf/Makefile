@@ -51,7 +51,7 @@ all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(OBJS)
 
-				$(CP) $(LIBFT) $(NAME)
+				@CP $(LIBFT) $(NAME)
 
 				@$(AR) $(NAME) $(OBJS)
 

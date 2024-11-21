@@ -11,39 +11,20 @@
 # **************************************************************************** #
 
 NAME		= libftprintf.a
-
-
-
 LIBFT		= ./libft/libft.a
-
 LIBFTDIR	= ./libft
-
-
-
 SRC			= ./src
-
-
 
 PRINTF_SRCS	= ft_printf.c ft_printf_hex.c ft_printf_p.c \
 
 				ft_printf_un.c ft_printf_funcs.c
 
-
-
 OBJS		= $(PRINTF_SRCS:.c=.o)
 
-
-
 CC			= cc 
-
 AR			= ar rcs
-
 RM			= rm -rf 
-
 CFLAGS		= -Wall -Wextra -Werror
-
-
-
 
 all:		$(NAME)
 

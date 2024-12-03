@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 20:30:31 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/03 20:52:16 by ceaugust         ###   ########.fr       */
+/*   Created: 2024/12/03 19:42:13 by ceaugust          #+#    #+#             */
+/*   Updated: 2024/12/03 20:56:01 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-int	ft_printf(const char *, ...);
-int ft_putchar(char c);
-int ft_putstr(char *str);
+int	ft_putstr(char *str)
+{
+	int len;
 
-
-# include <unistd.h>
-# include <stdarg.h> 
-
-#endif
+	len = 0;
+	if (!str)
+		str = "(null)";
+	while (str[len])
+		len++;
+	write(1, str, len);
+	return len;
+}

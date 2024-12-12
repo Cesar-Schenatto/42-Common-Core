@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 19:42:13 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/12 04:10:25 by ceaugust         ###   ########.fr       */
+/*   Created: 2024/12/11 22:51:15 by ceaugust          #+#    #+#             */
+/*   Updated: 2024/12/12 04:30:17 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_putnbr_base(unsigned long n, const char *base)
 {
 	int	len;
+	int	base_len;
 
 	len = 0;
-	if (!str)
-		str = "(null)";
-	while (str[len])
-		len++;
-	write(1, str, len);
+	base_len = 0;
+	while (base[base_len])
+		base_len++;
+	if (n == 0)
+		return (ft_putchar(base[0]));
+	if (n >= base_len)
+		len += ft_putnbr_base(n / base_len, base);
+	len += ft_putchar(base[n % base_len]);
 	return (len);
 }

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putuint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 19:42:13 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/12 04:10:25 by ceaugust         ###   ########.fr       */
+/*   Created: 2024/12/12 04:23:36 by ceaugust          #+#    #+#             */
+/*   Updated: 2024/12/12 04:32:27 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_putuint(unsigned int n)
 {
 	int	len;
 
 	len = 0;
-	if (!str)
-		str = "(null)";
-	while (str[len])
-		len++;
-	write(1, str, len);
+	if (n < 0)
+	{
+		len += ft_putchar('-');
+		n *= -1;
+	}
+	len += ft_putnbr_base(n, "0123456789");
 	return (len);
 }

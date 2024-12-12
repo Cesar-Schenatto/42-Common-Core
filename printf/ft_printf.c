@@ -6,64 +6,80 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 20:42:16 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/03 20:58:42 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/12/12 04:25:43 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int The_Magic(va_list args, char type)
+static int	the_magic(va_list args, char type)
 {
 	if (type == 'c')
-		return ft_putchar(va_arg(args, int));
+		return (ft_putchar(va_arg(args, int)));
 	if (type == 's')
-		return ft_putstr(va_arg(args, char *));
-/*    if (type == 'd' || type == 'i')
-    	return ft_putnbr_fd(va_arg(args, int), 1);
+		return (ft_putstr(va_arg(args, char *)));
+	if (type == 'd' || type == 'i')
+		return (ft_putint(va_arg(args, int)));
 	if (type == 'u')
-    	return ft_putunbr_fd(va_arg(args, unsigned int), 1);
-	if (type == 'x') 
-    	return ft_puthex_fd(va_arg(args, unsigned int), 1, 0);
+		return (ft_putuint(va_arg(args, unsigned int)));
+	if (type == 'x')
+		return (ft_puthexa(va_arg(args, unsigned int), 0));
 	if (type == 'X')
-        return ft_puthex_fd(va_arg(args, unsigned int), 1, 1);
-    if (type == 'p')
-		return ft_putpointer_fd(va_arg(args, void *), 1);
+		return (ft_puthexa(va_arg(args, unsigned int), 1));
+	if (type == 'p')
+		return (ft_putpointer(va_arg(args, void *)));
 	if (type == '%')
-    	return ft_putchar_fd('%', 1); */
-    return (0);
-    
+		return (ft_putchar('%'));
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
 {
-    va_list args;
-    int     i = 0;
-    int     len = 0;
+	va_list	args;
+	int		i;
+	int		len;
 
-    va_start(args, str);
-    while (str[i])
-    {
-        if (str[i] == '%' && str[i + 1])
-        {
-            len += The_Magic(args, str[++i]); 
-        }
-        else
-        {
-            ft_putchar(str[i]); 
-            len++;
-        }
-        i++; 
-    }
-    va_end(args);
-    return (len); 
+	i = 0;
+	len = 0;
+	va_start(args, str);
+	while (str[i])
+	{
+		if (str[i] == '%' && str[i + 1])
+		{
+			len += the_magic(args, str[++i]);
+		}
+		else
+		{
+			ft_putchar(str[i]);
+			len++;
+		}
+		i++;
+	}
+	va_end(args);
+	return (len);
 }
 
+/*#include <stdio.h> 
 
 int main (void)
 {
+	int a = 69;
+	int *ptr = &a;
     ft_printf("%c", 'c');
 	ft_printf("\n");
 	ft_printf("%s","I want to hurt you");
+	ft_printf("\n pointer ");
+	ft_printf(" %p %p ", 0, 0);
+	ft_printf("\n hexa ");
+	ft_printf("%x", 255);
+	ft_printf("\n hexa again ");
+	ft_printf("%X", 255);
+	ft_printf("\n hexa again again  "); 
+	ft_printf("%x", -255);
+	ft_printf("\n unsinged int ");
+	ft_printf("%u", 42);
+	ft_printf("\n");
+
     return 0;
 }
-
+*/

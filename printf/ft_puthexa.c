@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 19:42:13 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/12 04:10:25 by ceaugust         ###   ########.fr       */
+/*   Created: 2024/12/11 23:21:59 by ceaugust          #+#    #+#             */
+/*   Updated: 2024/12/12 04:17:54 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_puthexa(unsigned long n, int is_up)
 {
-	int	len;
+	const char	*base;
 
-	len = 0;
-	if (!str)
-		str = "(null)";
-	while (str[len])
-		len++;
-	write(1, str, len);
-	return (len);
+	if (is_up)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	return (ft_putnbr_base(n, base));
 }

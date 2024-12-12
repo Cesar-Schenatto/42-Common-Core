@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 22:51:15 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/12 04:30:17 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/12/12 07:06:31 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_putnbr_base(unsigned long n, const char *base)
 {
-	int	len;
-	int	base_len;
+	int				len;
+	unsigned long	base_len;
 
 	len = 0;
 	base_len = 0;

@@ -86,31 +86,30 @@ char	*extract_line(char *buffer)
 	return (line);
 }
 
-char	*trim_buffer(char *buffer)
+char *trim_buffer(char *buffer)
 {
     char *new_buffer;
-    size_t i = 0, buffer_len = 0;
+    size_t i;
+	size_t;j
 
+	i = 0;
+	j = 0;
     if (!buffer)
         return (NULL);
     while (buffer[i] && buffer[i] != '\n')
         i++;
-    if (!buffer[i])
-    {
-        free_and_null(&buffer);
-        return (NULL);
-    }
-    while (buffer[i + 1 + buffer_len])
-        buffer_len++;
-    new_buffer = malloc(buffer_len + 1);
+    if (!buffer[i++])
+        return (free_and_null(&buffer), NULL);
+    while (buffer[i + j])
+        j++;
+    new_buffer = malloc(j + 1);
     if (!new_buffer)
-    {
-        free_and_null(&buffer);
-        return (NULL);
-    }
-    while (buffer[++i])
-        new_buffer[buffer_len++] = buffer[i];
-    new_buffer[buffer_len] = '\0';
+        return (free_and_null(&buffer), NULL);
+    j = 0;
+    while (buffer[i])
+        new_buffer[j++] = buffer[i++];
+    new_buffer[j] = '\0';
     free_and_null(&buffer);
     return (new_buffer);
 }
+

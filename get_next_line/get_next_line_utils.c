@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:17:57 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/21 13:24:12 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/12/21 13:30:57 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ char *appender(char *buffer, const char *temp)
     char *new_buffer;
     size_t i, j;
 
-	while (buffer[buffer_len] && buffer)
+	while (buffer && buffer[buffer_len])
 		buffer_len++;
-	while (temp[temp_len] && temp)
+	while (temp && temp[temp_len])
 		temp_len++;
     new_buffer = malloc(buffer_len + temp_len + 1);
     if (!new_buffer)

@@ -6,13 +6,13 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:17:57 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/17 14:58:32 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/12/21 13:24:12 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	free_and_null(char **ptr)
+void	rock_and_roll(char **ptr)
 {
 	if (ptr && *ptr)
 	{
@@ -21,7 +21,7 @@ void	free_and_null(char **ptr)
 	}
 }
 
-int	find_newline(const char buffer)
+int	find_newline(const char *buffer)
 {
 	int	i;
 
@@ -37,60 +37,66 @@ int	find_newline(const char buffer)
 	return (0);
 }
 
-char	*append_buffer(char *buffer, const char *temp)
+char *appender(char *buffer, const char *temp)
 {
-	char	*new_buffer;
-	size_t	buffer_len;
-	size_t	temp_len;
-	size_t	i;
-	size_t	j;
+    size_t buffer_len = 0;
+    size_t temp_len = 0;
+    char *new_buffer;
+    size_t i, j;
 
-	buffer_len = 0;
-	temp_len = 0;
-	i = 0;
-	j = 0;
-	while (buffer && buffer[buffer_len])
+	while (buffer[buffer_len] && buffer)
 		buffer_len++;
-	while (temp && temp[temp_len])
+	while (temp[temp_len] && temp)
 		temp_len++;
-	new_buffer = malloc(buffer_len + temp_len + 1);
-	if (!new_buffer)
-		return (NULL);
+    new_buffer = malloc(buffer_len + temp_len + 1);
+    if (!new_buffer)
+        return NULL;
+    i = 0;
 	while (i < buffer_len)
-		new_buffer[i++] = buffer[i];
+	{
+		new_buffer[i] = buffer[i];
+		i++;
+	}
+    j = 0;
 	while (j < temp_len)
-		new_buffer[i + j++] = temp[j];
-	new_buffer[i + j] = '\0';
-	free_and_null(&buffer);
+	{
+		new_buffer[i + j] = temp[j];
+		j++;
+	}
+    new_buffer[i + j] = '\0';
+	rock_and_roll(&buffer);
 	return (new_buffer);
 }
 
-char	*extract_line(char *buffer)
+char *extractor(char *buffer)
 {
-	char	*line;
-	size_t	i;
+    size_t i = 0;
+    char *line;
 
-	i = 0;
-	if (!buffer || !*buffer)
-		return (NULL);
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	line = malloc(i + 2);
-	if (!line)
-		return (NULL);
-	while (i--)
-		line[i] = buffer[i];
-	if (buffer[i + 1] == '\n')
-		line[i + 1] = '\n';
-	line[i + 2] = '\0';
-	return (line);
+    if (!buffer || !*buffer)
+        return NULL;
+    while (buffer[i] && buffer[i] != '\n')
+        i++;
+    line = malloc((buffer[i] == '\n' ? i + 2 : i + 1) + 1);
+    if (!line)
+        return NULL;
+    size_t j = 0;
+    while (j < i)
+    {
+        line[j] = buffer[j];
+        j++;
+    }
+    if (buffer[i] == '\n')
+        line[j++] = '\n';
+    line[j] = '\0';
+    return line;
 }
 
-char *trim_buffer(char *buffer)
+char *trimmer(char *buffer)
 {
-    char *new_buffer;
-    size_t i;
-	size_t;j
+    char	*new_buffer;
+    size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -99,17 +105,16 @@ char *trim_buffer(char *buffer)
     while (buffer[i] && buffer[i] != '\n')
         i++;
     if (!buffer[i++])
-        return (free_and_null(&buffer), NULL);
+        return (rock_and_roll(&buffer), NULL);
     while (buffer[i + j])
         j++;
     new_buffer = malloc(j + 1);
     if (!new_buffer)
-        return (free_and_null(&buffer), NULL);
+        return (rock_and_roll(&buffer), NULL);
     j = 0;
     while (buffer[i])
         new_buffer[j++] = buffer[i++];
     new_buffer[j] = '\0';
-    free_and_null(&buffer);
+    rock_and_roll(&buffer);
     return (new_buffer);
 }
-

@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 10:00:38 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/21 11:16:04 by ceaugust         ###   ########.fr       */
+/*   Created: 2024/12/21 09:47:47 by ceaugust          #+#    #+#             */
+/*   Updated: 2024/12/21 11:13:11 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <fcntl.h> //open
+#include <stdio.h>
+#include <stdlib.h> //exit
+#include "get_next_line.h"
 
-# include <stdlib.h>
-# include <unistd.h> 
+int main (void) 
+{
+	int fd;
+	char *line;
+	int i = 1;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-//main function
-
-char	*get_next_line(int fd);
-
-// Utility functions 
-
-char	*appender(char *buffer, const char *temp);
-char	*extractor(char *buffer);
-char	*trimmer(char *buffer);
-int		find_newline(const char *buffer);
-void	rock_and_roll(char **ptr);
-
-#endif
+	fd = open("file.txt", O_RDONLY);
+	if (fd < 0)
+	{
+		perror("oh no");
+		return 1;
+	}
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("lime %i:  %s", i, line);
+		free(line);
+		i++;
+	}
+	close(fd);
+	return (0);
+}

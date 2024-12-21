@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:26:35 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/17 12:17:44 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:30:11 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,18 @@ char	*get_next_line(int fd)
 	{
 		bytes_read = read(fd, temp, BUFFER_SIZE);
 		if (bytes_read < 0)
-			return (free_and_null(&buffer));
+		{
+			rock_and_roll(&buffer);
+			return (NULL);
+		}
 		if (bytes_read == 0)
 			break ;
 		temp[bytes_read] = '\0';
-		buffer = append_buffer(buffer, temp);
+		buffer = appender(buffer, temp);
 		if (!buffer)
 			return (NULL);
 	}
-	line = extract_line(buffer);
-	buffer = trim_buffer(buffer);
+	line = extractor(buffer);
+	buffer = trimmer(buffer);
 	return (line);
 }

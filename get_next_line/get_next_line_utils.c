@@ -3,22 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ceaugust <ceaugust@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:17:57 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/21 13:30:57 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/12/27 12:09:39 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	rock_and_roll(char **ptr)
+
+void twentyfivelines (twentyfive args)
 {
-	if (ptr && *ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
+    size_t  i;
+    size_t  j;
+
+    i = 0;
+    while(i < args.len1)
+    {
+        args.dest[i] = args.src1[i];
+        i++;
+    }
+    j = 0;
+    while (j < args.len2)
+    {
+        args.dest[i + j] = args.src2[j];
+        j++;
+    }
+    args.dest[i + j] = '\0';
 }
 
 int	find_newline(const char *buffer)
@@ -42,8 +54,7 @@ char *appender(char *buffer, const char *temp)
     size_t buffer_len = 0;
     size_t temp_len = 0;
     char *new_buffer;
-    size_t i, j;
-
+    
 	while (buffer && buffer[buffer_len])
 		buffer_len++;
 	while (temp && temp[temp_len])
@@ -51,19 +62,8 @@ char *appender(char *buffer, const char *temp)
     new_buffer = malloc(buffer_len + temp_len + 1);
     if (!new_buffer)
         return NULL;
-    i = 0;
-	while (i < buffer_len)
-	{
-		new_buffer[i] = buffer[i];
-		i++;
-	}
-    j = 0;
-	while (j < temp_len)
-	{
-		new_buffer[i + j] = temp[j];
-		j++;
-	}
-    new_buffer[i + j] = '\0';
+    twentyfive args = { new_buffer, buffer, buffer_len, temp, temp_len };
+    twentyfivelines(args);
 	rock_and_roll(&buffer);
 	return (new_buffer);
 }

@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ceaugust <ceaugust@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:26:35 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/21 11:30:11 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/12/27 12:11:00 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	rock_and_roll(char **ptr)
+{
+	if (ptr && *ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+}
 
 char	*get_next_line(int fd)
 {

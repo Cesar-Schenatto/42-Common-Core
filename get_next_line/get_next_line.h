@@ -6,7 +6,7 @@
 /*   By: ceaugust <ceaugust@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 10:00:38 by ceaugust          #+#    #+#             */
-/*   Updated: 2024/12/27 12:08:03 by ceaugust         ###   ########.fr       */
+/*   Updated: 2024/12/27 12:45:10 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@
 #  define BUFFER_SIZE 42
 # endif
 
-typedef struct 
+typedef struct s_twentyfive
 {
-char *dest;
-const char *src1;
-size_t len1;
-const char *src2;
-size_t len2;
-} twentyfive;
-
+	char		*dest;
+	const char	*src1;
+	size_t		len1;
+	const char	*src2;
+	size_t		len2;
+}	t_twentyfive;
 
 //main function
 
@@ -41,6 +40,5 @@ char	*extractor(char *buffer);
 char	*trimmer(char *buffer);
 int		find_newline(const char *buffer);
 void	rock_and_roll(char **ptr);
-
 
 #endif

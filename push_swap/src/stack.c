@@ -16,8 +16,23 @@ void push(t_stack *stack, t_node *node)
 {
     if (!stack || !node)
         return;
-    node->next = stack->top;
-    stack->top = node;
+
+    if (stack->top == NULL)
+    {
+        // If the stack is empty, the new node becomes the top
+        stack->top = node;
+    }
+    else
+    {
+        // Traverse to the bottom of the stack
+        t_node *current = stack->top;
+        while (current->next)
+        {
+            current = current->next;
+        }
+        // Add the new node to the bottom
+        current->next = node;
+    }
     stack->size++;
 }
 

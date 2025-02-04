@@ -11,8 +11,8 @@ int parse_values(char *str, t_stack *stack_a)
     while (values[count])
         count++;
 
-    // Push values onto the stack in reverse order
-    for (int i = count - 1; i >= 0; i++)
+    // Push values onto the stack in the same order as the input
+    for (int i = 0; i < count; i++)  // Fix: Push in the same order as input
     {
         printf("Parsing value: %s\n", values[i]);  // Debug print
         if (!is_valid_integer(values[i]))
@@ -39,7 +39,7 @@ int parse_values(char *str, t_stack *stack_a)
         print_stack(stack_a, "A");  // Debug print to verify stack state
     }
 
-    ft_free(values, 0);
+    ft_free(values, count);  // Fix: Free all allocated memory
     return (0);
 }
 

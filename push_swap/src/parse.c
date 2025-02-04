@@ -12,7 +12,7 @@ int parse_values(char *str, t_stack *stack_a)
         count++;
 
     // Push values onto the stack in reverse order
-    for (int i = count - 1; i >= 0; i--)
+    for (int i = count - 1; i >= 0; i++)
     {
         printf("Parsing value: %s\n", values[i]);  // Debug print
         if (!is_valid_integer(values[i]))

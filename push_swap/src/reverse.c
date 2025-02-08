@@ -1,53 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 17:32:52 by ceaugust          #+#    #+#             */
+/*   Updated: 2025/02/08 20:15:56 by ceaugust         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-// Reverse rotate a stack (last element becomes the top)
-void reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack)
 {
-    if (!stack || stack->size < 2)
-        return;
+	t_node	*current;
+	t_node	*prev;
 
-    t_node *current = stack->top;
-    t_node *prev = NULL;
-
-    // Traverse to the last element
-    while (current->next)
-    {
-        prev = current;
-        current = current->next;
-    }
-
-    prev->next = NULL;      // Detach the last element
-    current->next = stack->top;  // Point it to the top
-    stack->top = current;   // Update the top
+	if (!stack || stack->size < 2)
+		return ;
+	current = stack->top;
+	prev = NULL;
+	while (current->next)
+	{
+		prev = current;
+		current = current->next;
+	}
+	prev->next = NULL;
+	current->next = stack->top;
+	stack->top = current;
 }
 
-// Reverse rotate stack_a
-void rra(t_push_swap *ps)
+void	rra(t_push_swap *ps)
 {
-    if (ps)
-        {
-        reverse_rotate(ps->stack_a);
-        write(1, "rra\n", 4);
-        }
+	if (ps)
+	{
+		reverse_rotate(ps->stack_a);
+		write(1, "rra\n", 4);
+	}
 }
 
-// Reverse rotate stack_b
-void rrb(t_push_swap *ps)
+void	rrb(t_push_swap *ps)
 {
-    if (ps)
-    {
-        reverse_rotate(ps->stack_b);
-        write(1, "rrb\n", 4);
-    }
+	if (ps)
+	{
+		reverse_rotate(ps->stack_b);
+		write(1, "rrb\n", 4);
+	}
 }
 
-// Reverse rotate both stack_a and stack_b
-void rrr(t_push_swap *ps)
+void	rrr(t_push_swap *ps)
 {
-    if (ps)
-    {
-        reverse_rotate(ps->stack_a);
-        reverse_rotate(ps->stack_b);
-        write(1, "rrr\n", 4);
-    }
+	if (ps)
+	{
+		reverse_rotate(ps->stack_a);
+		reverse_rotate(ps->stack_b);
+		write(1, "rrr\n", 4);
+	}
 }

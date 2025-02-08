@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:34:56 by ceaugust          #+#    #+#             */
-/*   Updated: 2025/02/04 15:48:46 by ceaugust         ###   ########.fr       */
+/*   Updated: 2025/02/08 20:35:27 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ int			stack_size(t_stack *stack);
 
 /* Main functions */
 t_push_swap	*init_push_swap(void);
+void		assign_indexes(t_stack *stack);
+
+/* Free functions */
+void		*ft_free(char **splitted, size_t i);
+void		free_stack(t_stack *stack);
 void		free_push_swap(t_push_swap *ps);
 
 /* String functions */
@@ -99,11 +104,14 @@ int			parse_input(int argc, char **argv, t_stack *stack_a);
 
 /* Sort algorithms */
 void		sort_three(t_push_swap *ps);
+void		sort_four(t_push_swap *ps);
 void		sort_five(t_push_swap *ps);
-void		chunk_sort(t_push_swap *ps, int chunk_count);
 void		radix_sort(t_push_swap *ps);
+void		assign_indexes(t_stack *stack);
 void		push_min_to_b(t_push_swap *ps);
-
+int			find_index(int *sorted_arr, int size, int value);
+void		ft_qsort(void *base, size_t nmemb, size_t size,
+				int (*compar)(const void *, const void *));
 /* Debugging */
 void		print_stack(t_stack *stack, const char *name);
 

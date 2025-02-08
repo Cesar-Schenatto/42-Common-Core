@@ -1,43 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 18:30:46 by ceaugust          #+#    #+#             */
+/*   Updated: 2025/02/08 20:10:39 by ceaugust         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void sort_three(t_push_swap *ps)
+static void	perform_three_sort(t_push_swap *ps, int a, int b, int c)
 {
-    if (!ps || !ps->stack_a || ps->stack_a->size != 3)
-        return;
+	if (a < b && b < c)
+		return ;
+	else if (a < c && c < b)
+	{
+		sa(ps);
+		ra(ps);
+	}
+	else if (b < a && a < c)
+		sa(ps);
+	else if (b < c && c < a)
+		ra(ps);
+	else if (c < a && a < b)
+		rra(ps);
+	else if (c < b && b < a)
+	{
+		sa(ps);
+		rra(ps);
+	}
+}
 
-    int a = ps->stack_a->top->value;
-    int b = ps->stack_a->top->next->value;
-    int c = ps->stack_a->top->next->next->value;
+void	sort_three(t_push_swap *ps)
+{
+	int	a;
+	int	b;
+	int	c;
 
-//    printf("Before sorting: a = %d, b = %d, c = %d\n", a, b, c);  // Debug print
-
-    if (a < b && b < c)         // Case 1: a < b < c (already sorted)
-        return;                 // Do nothing
-    else if (a < c && c < b)    // Case 2: a < c < b
-    {
-  //      printf("Case 2: a < c < b\n");
-        sa(ps);                 // Swap a and b
-        ra(ps);                 // Rotate
-    }
-    else if (b < a && a < c)    // Case 3: b < a < c
-    {
-   //     printf("Case 3: b < a < c\n");
-        sa(ps);                 // Swap a and b
-    }
-    else if (b < c && c < a)    // Case 4: b < c < a
-    {
-   //     printf("Case 4: b < c < a\n");
-        ra(ps);                 // Rotate
-    }
-    else if (c < a && a < b)    // Case 5: c < a < b
-    {
-    //    printf("Case 5: c < a < b\n");
-        rra(ps);                // Reverse rotate
-    }
-    else if (c < b && b < a)    // Case 6: c < b < a
-    {
-    //    printf("Case 6: c < b < a\n");
-        sa(ps);                 // Swap a and b
-        rra(ps);                // Reverse rotate
-    }
+	if (!ps || !ps->stack_a)
+		return ;
+	a = ps->stack_a->top->value;
+	b = ps->stack_a->top->next->value;
+	c = ps->stack_a->top->next->next->value;
+	perform_three_sort(ps, a, b, c);
 }

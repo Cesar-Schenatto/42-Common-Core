@@ -1,65 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 18:55:34 by ceaugust          #+#    #+#             */
+/*   Updated: 2025/02/08 19:46:12 by ceaugust         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void push_min_to_b(t_push_swap *ps)
+static int	get_min_position(t_stack *stack)
 {
-    if (!ps || !ps->stack_a || !ps->stack_b || ps->stack_a->size == 0)
-        return;
+	int		min;
+	int		pos;
+	t_node	*curr;
 
-    // Find the minimum value in stack_a
-    t_node *current = ps->stack_a->top;
-    t_node *min_node = current;
-    int min_index = 0;
-    int current_index = 0;
-    int i = 0;
-
-    while (current)
-    {
-        if (current->value < min_node->value)
-        {
-            min_node = current;
-            min_index = current_index;
-        }
-        current = current->next;
-        current_index++;
-    }
-
-    // Calculate the number of rotations needed
-    int rotations = min_index;
-    int direction = 1; // 1 for ra, -1 for rra
-
-    if (rotations > ps->stack_a->size / 2)
-    {
-        rotations = ps->stack_a->size - rotations;
-        direction = -1; // Use rra
-    }
-
-    // Rotate stack_a to bring min_node to the top
-    while (i < rotations)
-    {
-        if (direction == 1)
-            ra(ps); // Rotate forward
-        else
-            rra(ps); // Rotate backward
-        i++;
-    }
-
-    // Push the min_node to stack_b
-    pb(ps);
+	min = find_min(stack);
+	pos = 0;
+	curr = stack->top;
+	while (curr)
+	{
+		if (curr->value == min)
+			break ;
+		pos++;
+		curr = curr->next;
+	}
+	return (pos);
 }
 
-void sort_five(t_push_swap *ps)
+static void	rotate_stack(t_push_swap *ps, int rotations, int direction)
 {
-    if (!ps || ps->stack_a->size > 5)
-        return;
+	int	i;
 
-    // Push two smallest elements to stack_b
-    push_min_to_b(ps);
-    push_min_to_b(ps);
+	i = 0;
+	while (i < rotations)
+	{
+		if (direction == 1)
+			ra(ps);
+		else
+			rra(ps);
+		i++;
+	}
+}
 
-    // Sort remaining three elements in stack_a
-    sort_three(ps);
+void	push_min_to_b(t_push_swap *ps)
+{
+	int	pos;
+	int	rotations;
+	int	direction;
 
-    // Push back the smallest elements from stack_b
-    pa(ps);
-    pa(ps);
+	if (!ps || !ps->stack_a || ps->stack_a->size == 0)
+		return ;
+	pos = get_min_position(ps->stack_a);
+	if (pos <= ps->stack_a->size / 2)
+	{
+		rotations = pos;
+		direction = 1;
+	}
+	else
+	{
+		rotations = ps->stack_a->size - pos;
+		direction = -1;
+	}
+	rotate_stack(ps, rotations, direction);
+	pb(ps);
+}
+
+void	sort_five(t_push_swap *ps)
+{
+	if (!ps || !ps->stack_a || ps->stack_a->size != 5)
+		return ;
+	push_min_to_b(ps);
+	push_min_to_b(ps);
+	sort_three(ps);
+	if (ps->stack_b->size == 2 && \
+		ps->stack_b->top->value < ps->stack_b->top->next->value)
+		sb(ps);
+	pa(ps);
+	pa(ps);
 }

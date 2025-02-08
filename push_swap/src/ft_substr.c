@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 20:14:04 by ceaugust          #+#    #+#             */
+/*   Updated: 2025/02/08 20:14:10 by ceaugust         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 size_t	ft_strlen(const char *s)
@@ -27,7 +39,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[i] = 0;
 	return (srclen);
 }
-
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

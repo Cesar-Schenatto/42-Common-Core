@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:04:03 by ceaugust          #+#    #+#             */
-/*   Updated: 2025/02/04 18:12:52 by ceaugust         ###   ########.fr       */
+/*   Updated: 2025/02/08 20:48:36 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	handle_errors(int ac, char **av, t_push_swap *ps)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	print_stack(ps->stack_a, "A");
 	if (is_sorted(ps->stack_a))
 	{
 		free_push_swap(ps);
@@ -52,13 +51,17 @@ int	main(int ac, char **av)
 	ps = init_push_swap();
 	if (!ps || handle_errors(ac, av, ps))
 		return (1);
+	assign_indexes(ps->stack_a);
+	if (ps->stack_a->size == 2)
+		return (ra(ps), free_push_swap(ps), 0);
 	if (ps->stack_a->size == 3)
 		sort_three(ps);
+	else if (ps->stack_a->size == 4)
+		sort_four(ps);
 	else if (ps->stack_a->size == 5)
 		sort_five(ps);
 	else
 		radix_sort(ps);
-	print_stack(ps->stack_a, "A");
 	free_push_swap(ps);
 	return (0);
 }

@@ -1,47 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 17:35:19 by ceaugust          #+#    #+#             */
+/*   Updated: 2025/02/08 19:36:17 by ceaugust         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-// Swap the first two elements of a stack
-void swap(t_stack *stack)
+void	swap(t_stack *stack)
 {
-    if (!stack || stack->size < 2)
-        return;
+	t_node	*first;
+	t_node	*second;
 
-    t_node *first = stack->top;
-    t_node *second = first->next;
-
-    first->next = second->next;
-    second->next = first;
-    stack->top = second;
+	if (!stack || stack->size < 2)
+		return ;
+	first = stack->top;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	stack->top = second;
 }
 
-// Swap the first two elements of stack_a
-void sa(t_push_swap *ps)
+void	sa(t_push_swap *ps)
 {
-    if (ps)
-    {
-        swap(ps->stack_a);
-        write(1, "sa\n", 3);
-    }
+	if (ps)
+	{
+		swap(ps->stack_a);
+		write(1, "sa\n", 3);
+	}
 }
 
-// Swap the first two elements of stack_b
-void sb(t_push_swap *ps)
+void	sb(t_push_swap *ps)
 {
-    if (ps)
-    {
-        swap(ps->stack_b);
-        write(1, "sa\n", 3);
-    }
+	if (ps)
+	{
+		swap(ps->stack_b);
+		write(1, "sb\n", 3);
+	}
 }
 
-// Swap both stack_a and stack_b
-void ss(t_push_swap *ps)
+void	ss(t_push_swap *ps)
 {
-    if (ps)
-    {
-        swap(ps->stack_a);
-        swap(ps->stack_b);
-        write(1, "ss\n", 3);
-    }
+	if (ps)
+	{
+		swap(ps->stack_a);
+		swap(ps->stack_b);
+		write(1, "ss\n", 3);
+	}
 }
-

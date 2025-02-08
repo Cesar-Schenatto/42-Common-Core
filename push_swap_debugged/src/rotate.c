@@ -5,18 +5,23 @@ void rotate(t_stack *stack)
 {
     if (!stack || stack->size < 2)
         return;
-
-    t_node *first = pop(stack);  // Remove the top element
+    
+    // Save pointer to the first node.
+    t_node *first = stack->top;
+    // Update the top pointer.
+    stack->top = first->next;
+    // Isolate the first node.
+    first->next = NULL;
+    
+    // Traverse to the last node.
     t_node *current = stack->top;
-
-    // Traverse to the bottom of the stack
     while (current->next)
         current = current->next;
-
-    current->next = first;  // Add the first element to the bottom
-    first->next = NULL;     // Update its next pointer
+    
+    // Append the first node at the bottom.
+    current->next = first;
+    // Note: Do not modify stack->size (it stays the same)
 }
-
 // Rotate stack_a upwards
 void ra(t_push_swap *ps)
 {

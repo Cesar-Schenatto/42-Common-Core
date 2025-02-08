@@ -30,7 +30,7 @@ void sb(t_push_swap *ps)
     if (ps)
     {
         swap(ps->stack_b);
-        write(1, "sa\n", 3);
+        write(1, "sb\n", 3);
     }
 }
 

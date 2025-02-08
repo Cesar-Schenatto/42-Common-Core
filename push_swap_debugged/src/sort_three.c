@@ -2,9 +2,12 @@
 
 void sort_three(t_push_swap *ps)
 {
-    if (!ps || !ps->stack_a || ps->stack_a->size != 3)
+    if (!ps || !ps->stack_a)
         return;
-
+    printf("sort_three: size = %d, a=%d, b=%d, c=%d\n", ps->stack_a->size,
+       ps->stack_a->top->value,
+       ps->stack_a->top->next->value,
+       ps->stack_a->top->next->next->value);
     int a = ps->stack_a->top->value;
     int b = ps->stack_a->top->next->value;
     int c = ps->stack_a->top->next->next->value;

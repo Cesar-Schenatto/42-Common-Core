@@ -52,8 +52,11 @@ int	main(int ac, char **av)
 	ps = init_push_swap();
 	if (!ps || handle_errors(ac, av, ps))
 		return (1);
+	assign_indexes(ps->stack_a);
 	if (ps->stack_a->size == 3)
 		sort_three(ps);
+	else if (ps->stack_a->size == 4)
+	    sort_four(ps);
 	else if (ps->stack_a->size == 5)
 		sort_five(ps);
 	else

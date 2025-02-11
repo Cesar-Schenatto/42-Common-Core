@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:34:56 by ceaugust          #+#    #+#             */
-/*   Updated: 2025/02/08 20:35:27 by ceaugust         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:52:17 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void		free_push_swap(t_push_swap *ps);
 /* String functions */
 char		*ft_substr(const char *s, unsigned int start, size_t len);
 char		**ft_split(char const *s, char c);
-void		*ft_free(char **splitted, size_t i);
 size_t		ft_strlen(const char *s);
 
 /* Utility functions */
@@ -107,12 +106,9 @@ void		sort_three(t_push_swap *ps);
 void		sort_four(t_push_swap *ps);
 void		sort_five(t_push_swap *ps);
 void		radix_sort(t_push_swap *ps);
-void		assign_indexes(t_stack *stack);
 void		push_min_to_b(t_push_swap *ps);
-int			find_index(int *sorted_arr, int size, int value);
-void		ft_qsort(void *base, size_t nmemb, size_t size,
-				int (*compar)(const void *, const void *));
+
 /* Debugging */
-void		print_stack(t_stack *stack, const char *name);
+//void		print_stack(t_stack *stack, const char *name);
 
 #endif

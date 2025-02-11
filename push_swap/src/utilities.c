@@ -6,7 +6,7 @@
 /*   By: ceaugust <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:13:46 by ceaugust          #+#    #+#             */
-/*   Updated: 2025/02/08 19:57:06 by ceaugust         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:02:32 by ceaugust         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,15 +108,15 @@ int	is_valid_integer(const char *str)
 	}
 	else if (*str == '+')
 		str++;
-	while (*str)
+	if (*str == '\0')
+		return (0);
+	while (*str && *str >= '0' && *str <= '9')
 	{
-		if (*str < '0' || *str > '9')
-			return (0);
 		result = result * 10 + (*str - '0');
 		if ((sign == 1 && result > 2147483647) || \
 			(sign == -1 && - result < -2147483648))
 			return (0);
 		str++;
 	}
-	return (1);
+	return (*str == '\0');
 }
